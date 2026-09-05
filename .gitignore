@@ -1,0 +1,28 @@
+# Docker
+docker-compose.override.yml
+Dockerfile.override
+.dockerignore
+
+# Common
+.DS_Store
+Thumbs.db
+*.log
+*.bak
+*.tmp
+*.swp
+*~
+
+
+# Local environment files
+.env
+.env.local
+.env.*.local
+
+immich-app/library
+immich-app/postgres
+stirling-pdf/stirling-data
+dawarich/dawarich_db_data
+dawarich/dawarich_shared
+dawarich/dawarich_public
+dawarich/dawarich_watched
+dawarich/dawarich_storage
