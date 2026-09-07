@@ -1,0 +1,28 @@
+services:
+  arcane:
+    image: ghcr.io/getarcaneapp/manager:v2.10.2
+    container_name: arcane
+    restart: unless-stopped
+
+    ports:
+      - "3552:3552"
+
+    volumes:
+      # Arcane's own persistent state.
+      # This directory should be gitignored.
+      - ./data:/app/data
+
+      # Docker API
+      - /var/run/docker.sock:/var/run/docker.sock
+
+      # Your Git checkout containing all Compose projects
+      - /root/homelab:/app/data/projects:rw
+
+    environment:
+      APP_URL: "http://10.0.0.105:3552"
+      ENCRYPTION_KEY: "7b0ff558d2ab980a3f9625badc1d36c10397e4cf5ca0dd0826a945f03002a56u4"
+      # Optional but useful
+      TZ: "America/Toronto"
+      PUID: "0"
+      PGID: "0"
+

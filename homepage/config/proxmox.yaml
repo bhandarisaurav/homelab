@@ -1,0 +1,5 @@
+---
+pve:
+  url: http://10.0.0.219:8006
+  token: api@pam!ac6c270c-6d56-44e1-a7a7-9772ec693651
+  secret: secret

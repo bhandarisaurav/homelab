@@ -26,3 +26,7 @@ dawarich/dawarich_shared
 dawarich/dawarich_public
 dawarich/dawarich_watched
 dawarich/dawarich_storage
+
+# Arcane runtime data
+arcane/data/
+homepage/config/logs/homelab.log
