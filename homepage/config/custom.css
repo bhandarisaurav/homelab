@@ -1,0 +1,75 @@
+/* Homelab tile theme */
+
+/* Wallpaper: deep slate/indigo gradient with soft glows */
+body, #page_wrapper {
+  background:
+    radial-gradient(1200px 600px at 10% -10%, rgba(99, 102, 241, 0.25), transparent 60%),
+    radial-gradient(900px 500px at 100% 0%, rgba(20, 184, 166, 0.18), transparent 60%),
+    radial-gradient(800px 600px at 50% 110%, rgba(236, 72, 153, 0.12), transparent 60%),
+    #0b1020 !important;
+  background-attachment: fixed !important;
+}
+
+/* Group headings */
+.service-group-name {
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+/* Glass tiles */
+.service-card {
+  border-radius: 16px !important;
+  background: rgba(255, 255, 255, 0.06) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+  min-height: 112px;
+}
+.service-card:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.11) !important;
+  border-color: rgba(129, 140, 248, 0.45);
+}
+
+/* Stack icon above name, centered */
+.service-title {
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center;
+  padding-top: 0.9rem;
+  padding-bottom: 0.5rem;
+}
+.service-icon {
+  width: 48px !important;
+  height: 48px !important;
+  max-width: 48px !important;
+  margin: 0 0 0.45rem 0 !important;
+}
+.service-icon img, .service-icon svg {
+  width: 48px !important;
+  height: 48px !important;
+  object-fit: contain;
+}
+.service-title-text {
+  padding: 0 !important;
+  align-items: center !important;
+}
+.service-name {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.service-description { display: none !important; }
+
+/* Widget stats under tiles: smaller, tighter */
+.service-block { border-radius: 10px !important; }
+.service-block-value { font-size: 0.8rem; }
+.service-block-label { font-size: 0.6rem; opacity: 0.7; }
+
+/* Header widgets and bookmarks: glassy too */
+.information-widget-resources, .information-widget-openmeteo, .information-widget-datetime {
+  opacity: 0.9;
+}
+.bookmark-text { font-size: 0.85rem; }

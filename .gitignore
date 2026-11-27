@@ -30,3 +30,16 @@ dawarich/dawarich_storage
 # Arcane runtime data
 arcane/data/
 homepage/config/logs/homelab.log
+
+# Secrets kept out of git (see *.example files)
+api.key
+*.db
+*.db-shm
+*.db-wal
+
+# Runtime data
+homepage/config/logs/
+immichframe/Config/*
+!immichframe/Config/Settings.yml
+!immichframe/Config/api.key.example
+speedtest-tracker/config/

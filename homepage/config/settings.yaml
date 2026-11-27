@@ -1,7 +1,30 @@
 ---
-# For configuration options and examples, please see:
-# https://gethomepage.dev/configs/settings/
+title: Homelab
+theme: dark
+color: slate
+headerStyle: clean
+statusStyle: dot
+target: _blank
+hideVersion: true
+cardBlur: md
+showStats: false
+fullWidth: false
+maxGroupColumns: 1
 
-providers:
-  openweathermap: openweathermapapikey
-  weatherapi: weatherapiapikey
+layout:
+  Infrastructure:
+    icon: mdi-server-network
+    style: row
+    columns: 5
+  Photos & Files:
+    icon: mdi-image-multiple
+    style: row
+    columns: 5
+  Life & Tools:
+    icon: mdi-toolbox
+    style: row
+    columns: 5
+  Admin:
+    icon: mdi-shield-key
+  Docs:
+    icon: mdi-book-open-variant

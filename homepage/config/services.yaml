@@ -1,18 +1,110 @@
 ---
-# For configuration options and examples, please see:
-# https://gethomepage.dev/configs/services/
+# Homelab dashboard — tile layout. Secrets come from ../.env as {{HOMEPAGE_VAR_*}}.
 
-- My First Group:
-    - My First Service:
-        href: http://localhost/
-        description: Homepage is awesome
+- Infrastructure:
+    - Proxmox:
+        icon: proxmox.png
+        href: https://10.0.0.219:8006
+        siteMonitor: https://10.0.0.219:8006
+        widget:
+          type: proxmox
+          url: https://10.0.0.219:8006
+          username: "{{HOMEPAGE_VAR_PVE_TOKEN}}"
+          password: "{{HOMEPAGE_VAR_PVE_SECRET}}"
+          node: homelab
+    - AdGuard:
+        icon: adguard-home.png
+        href: http://10.0.0.61
+        siteMonitor: http://10.0.0.61
+        proxmoxNode: homelab
+        proxmoxVMID: 103
+        proxmoxType: lxc
+        widget:
+          type: adguard
+          url: http://10.0.0.61
+          username: "{{HOMEPAGE_VAR_ADGUARD_USER}}"
+          password: "{{HOMEPAGE_VAR_ADGUARD_PASS}}"
+    - Proxy Manager:
+        icon: nginx-proxy-manager.png
+        href: http://10.0.0.28:81
+        siteMonitor: http://10.0.0.28:81
+        proxmoxNode: homelab
+        proxmoxVMID: 102
+        proxmoxType: lxc
+        widget:
+          type: npm
+          url: http://10.0.0.28:81
+          username: "{{HOMEPAGE_VAR_NPM_EMAIL}}"
+          password: "{{HOMEPAGE_VAR_NPM_PASS}}"
+    - Arcane:
+        icon: arcane.png
+        href: http://10.0.0.105:3552
+        siteMonitor: http://10.0.0.105:3552
+        server: local
+        container: arcane
+    - NetBird:
+        icon: netbird.png
+        href: https://app.netbird.io
+        proxmoxNode: homelab
+        proxmoxVMID: 100
+        proxmoxType: lxc
 
-- My Second Group:
-    - My Second Service:
-        href: http://localhost/
-        description: Homepage is the best
+- Photos & Files:
+    - Immich:
+        icon: immich.png
+        href: http://10.0.0.105:2283
+        siteMonitor: http://10.0.0.105:2283
+        server: local
+        container: immich_server
+        widget:
+          type: immich
+          url: http://10.0.0.105:2283
+          key: "{{HOMEPAGE_VAR_IMMICH_KEY}}"
+          version: 2
+    - ImmichFrame:
+        icon: immich.png
+        href: http://10.0.0.105:8081
+        siteMonitor: http://10.0.0.105:8081
+        server: local
+        container: immichframe
+    - Syncthing:
+        icon: syncthing.png
+        href: http://10.0.0.49:8384
+        siteMonitor: http://10.0.0.49:8384
+        proxmoxNode: homelab
+        proxmoxVMID: 107
+        proxmoxType: lxc
+    - Stirling PDF:
+        icon: stirling-pdf.png
+        href: http://10.0.0.105:8080
+        siteMonitor: http://10.0.0.105:8080
+        server: local
+        container: stirling-pdf
 
-- My Third Group:
-    - My Third Service:
-        href: http://localhost/
-        description: Homepage is 😎
+- Life & Tools:
+    - Dawarich:
+        icon: dawarich.png
+        href: http://10.0.0.105:3000
+        siteMonitor: http://10.0.0.105:3000
+        server: local
+        container: dawarich_app
+    - Reitti:
+        icon: mdi-map-marker-path
+        href: http://10.0.0.17:8080
+        siteMonitor: http://10.0.0.17:8080
+        proxmoxNode: homelab
+        proxmoxVMID: 105
+        proxmoxType: lxc
+    - Homebox:
+        icon: homebox.png
+        href: http://10.0.0.4:7745
+        siteMonitor: http://10.0.0.4:7745
+        proxmoxNode: homelab
+        proxmoxVMID: 101
+        proxmoxType: lxc
+    - Speedtest:
+        icon: speedtest-tracker.png
+        href: http://10.0.0.105:8765
+        siteMonitor: http://10.0.0.105:8765
+        server: local
+        container: speedtest-tracker

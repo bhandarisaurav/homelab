@@ -1,11 +1,28 @@
 ---
-# For configuration options and examples, please see:
-# https://gethomepage.dev/configs/info-widgets/
+- greeting:
+    text_size: xl
+    text: Homelab
+
+- datetime:
+    text_size: md
+    format:
+      dateStyle: medium
+      timeStyle: short
+      hour12: false
+
+- openmeteo:
+    label: Toronto
+    latitude: 43.6532
+    longitude: -79.3832
+    units: metric
+    cache: 15
 
 - resources:
+    label: docker CT
     cpu: true
     memory: true
     disk: /
+    expanded: true
 
 - search:
     provider: duckduckgo

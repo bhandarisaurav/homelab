@@ -1,0 +1,11 @@
+services:
+  immichframe:
+    image: ghcr.io/immichframe/immichframe:latest
+    container_name: immichframe
+    ports:
+      - 8081:8080
+    volumes:
+      - ./Config:/app/Config
+    environment:
+      TZ: America/Toronto
+    restart: unless-stopped
