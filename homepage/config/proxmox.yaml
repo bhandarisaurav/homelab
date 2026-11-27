@@ -1,5 +1,5 @@
 ---
-pve:
+homelab:
   url: https://10.0.0.219:8006
   token: "{{HOMEPAGE_VAR_PVE_TOKEN}}"
   secret: "{{HOMEPAGE_VAR_PVE_SECRET}}"

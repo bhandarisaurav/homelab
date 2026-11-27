@@ -1,0 +1,16 @@
+version: 1
+web:
+  listen:
+    port: 8080
+    host: 0.0.0.0
+  database:
+    location: /opt/scrutiny/config/scrutiny.db
+  influxdb:
+    host: scrutiny-influxdb
+    port: 8086
+    retention_policy: true
+log:
+  level: INFO
+notify:
+  urls:
+    - "ntfy://ntfy.sh/<your-topic>"

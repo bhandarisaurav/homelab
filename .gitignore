@@ -46,3 +46,9 @@ speedtest-tracker/config/
 
 # Arcane global env (local only)
 .env.global
+
+# Monitoring stack runtime data / secrets
+uptime-kuma/data/
+scrutiny/influxdb/
+scrutiny/config/*
+!scrutiny/config/scrutiny.yaml.example

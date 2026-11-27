@@ -1,13 +1,12 @@
 ---
 title: Homelab
-theme: dark
 color: slate
 headerStyle: clean
 statusStyle: dot
 target: _blank
 hideVersion: true
 cardBlur: md
-showStats: false
+showStats: true
 fullWidth: false
 maxGroupColumns: 1
 
@@ -22,6 +21,10 @@ layout:
     columns: 5
   Life & Tools:
     icon: mdi-toolbox
+    style: row
+    columns: 5
+  Monitoring:
+    icon: mdi-heart-pulse
     style: row
     columns: 5
   Admin:

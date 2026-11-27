@@ -1,0 +1,19 @@
+services:
+  scrutiny-influxdb:
+    image: influxdb:2.2
+    container_name: scrutiny-influxdb
+    volumes:
+      - ./influxdb:/var/lib/influxdb2
+    restart: unless-stopped
+  scrutiny:
+    image: ghcr.io/analogj/scrutiny:v0.10.0-web
+    container_name: scrutiny
+    ports:
+      - 8090:8080
+    volumes:
+      - ./config:/opt/scrutiny/config
+    environment:
+      SCRUTINY_WEB_INFLUXDB_HOST: scrutiny-influxdb
+    depends_on:
+      - scrutiny-influxdb
+    restart: unless-stopped

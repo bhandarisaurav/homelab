@@ -14,10 +14,19 @@ Arcane (`:3552`) manages the stacks from this directory.
 | `stirling-pdf/` | 8080 | PDF tools |
 | `speedtest-tracker/` | 8765 | Internet speed history (SQLite) |
 | `arcane/` | 3552 | Docker stack manager |
+| `uptime-kuma/` | 3001 | Uptime monitoring (v2, SQLite); alerts to ntfy |
+| `scrutiny/` | 8090 | Disk health hub (web + InfluxDB) |
+| `dozzle/` | 8888 | Live Docker logs |
 | `portainer/`, `autoheal/` | — | Not currently deployed |
 
 Other services run in their own LXCs: AdGuard (10.0.0.61), Nginx Proxy Manager (10.0.0.28:81),
 Syncthing (10.0.0.49:8384), Reitti (10.0.0.17:8080), Homebox (10.0.0.4:7745), NetBird (CT 100).
+
+On the Proxmox host (not in this repo): Glances API on `:61208` (systemd), the Scrutiny collector
+(`/usr/local/bin/scrutiny-collector-metrics`, `/etc/scrutiny/collector.yaml`, 6-hourly timer), and ntfy hooks
+for Proxmox notifications, smartd and ZFS ZED.
+
+Local names: AdGuard rewrites `*.home.arpa` to Nginx Proxy Manager, which proxies `<app>.home.arpa` to each app.
 
 ## Secrets
 
@@ -31,6 +40,7 @@ Secrets are **not** in git. Each stack that needs them has a git-ignored file pl
 | `dawarich/` | `.env` | `.env.example` |
 | `speedtest-tracker/` | `.env` | `.env.example` |
 | `immichframe/` | `Config/api.key` | `Config/api.key.example` |
+| `scrutiny/` | `config/scrutiny.yaml` (ntfy topic) | `config/scrutiny.yaml.example` |
 
 ## Recreate on a new machine
 
@@ -48,7 +58,7 @@ Secrets are **not** in git. Each stack that needs them has a git-ignored file pl
 5. Create the ImmichFrame key file: `printf '%s' '<immich-api-key>' > immichframe/Config/api.key`
 6. Start the stacks:
    ```sh
-   for d in immich-app dawarich stirling-pdf immichframe speedtest-tracker homepage arcane; do
+   for d in immich-app dawarich stirling-pdf immichframe speedtest-tracker uptime-kuma scrutiny dozzle homepage arcane; do
      (cd "$d" && docker compose up -d)
    done
    ```
@@ -60,4 +70,4 @@ Secrets are **not** in git. Each stack that needs them has a git-ignored file pl
    `991` is the docker group; Homepage runs with `PGID=991` so it can read the docker socket.
 
 Data that is **not** in git, so back it up separately: `/HDD/immich`, `dawarich/dawarich_*`, `stirling-pdf/stirling-data`,
-`speedtest-tracker/config`, `arcane/data`.
+`speedtest-tracker/config`, `arcane/data`, `uptime-kuma/data`, `scrutiny/influxdb`.

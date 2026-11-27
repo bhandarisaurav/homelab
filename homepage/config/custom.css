@@ -1,7 +1,7 @@
-/* Homelab tile theme */
+/* Homelab tile theme — works in both dark and light mode */
 
-/* Wallpaper: deep slate/indigo gradient with soft glows */
-body, #page_wrapper {
+/* ---------- Wallpaper ---------- */
+html.dark body, html.dark #page_wrapper {
   background:
     radial-gradient(1200px 600px at 10% -10%, rgba(99, 102, 241, 0.25), transparent 60%),
     radial-gradient(900px 500px at 100% 0%, rgba(20, 184, 166, 0.18), transparent 60%),
@@ -9,31 +9,54 @@ body, #page_wrapper {
     #0b1020 !important;
   background-attachment: fixed !important;
 }
+html:not(.dark) body, html:not(.dark) #page_wrapper {
+  background:
+    radial-gradient(1200px 600px at 10% -10%, rgba(99, 102, 241, 0.18), transparent 60%),
+    radial-gradient(900px 500px at 100% 0%, rgba(20, 184, 166, 0.14), transparent 60%),
+    radial-gradient(800px 600px at 50% 110%, rgba(236, 72, 153, 0.10), transparent 60%),
+    #eef1f7 !important;
+  background-attachment: fixed !important;
+}
 
-/* Group headings */
+/* ---------- Group headings ---------- */
 .service-group-name {
   font-size: 0.8rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  opacity: 0.7;
+  opacity: 0.75;
 }
 
-/* Glass tiles */
+/* ---------- Glass tiles ---------- */
 .service-card {
   border-radius: 16px !important;
-  background: rgba(255, 255, 255, 0.06) !important;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
   transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
   min-height: 112px;
 }
-.service-card:hover {
-  transform: translateY(-3px);
+.service-card:hover { transform: translateY(-3px); }
+
+html.dark .service-card {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+html.dark .service-card:hover {
   background: rgba(255, 255, 255, 0.11) !important;
   border-color: rgba(129, 140, 248, 0.45);
 }
+html:not(.dark) .service-card {
+  background: rgba(255, 255, 255, 0.75) !important;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
+}
+html:not(.dark) .service-card:hover {
+  background: rgba(255, 255, 255, 0.95) !important;
+  border-color: rgba(99, 102, 241, 0.45);
+}
+html:not(.dark) .service-name,
+html:not(.dark) .service-group-name,
+html:not(.dark) .bookmark-text { color: #1e293b !important; }
 
-/* Stack icon above name, centered */
+/* ---------- Icon above name, centered ---------- */
 .service-title {
   flex-direction: column !important;
   align-items: center !important;
@@ -63,13 +86,33 @@ body, #page_wrapper {
 }
 .service-description { display: none !important; }
 
-/* Widget stats under tiles: smaller, tighter */
+/* ---------- Widget stats under tiles ---------- */
 .service-block { border-radius: 10px !important; }
 .service-block-value { font-size: 0.8rem; }
 .service-block-label { font-size: 0.6rem; opacity: 0.7; }
 
-/* Header widgets and bookmarks: glassy too */
-.information-widget-resources, .information-widget-openmeteo, .information-widget-datetime {
-  opacity: 0.9;
+/* ---------- Visible dark/light toggle: floating pill, bottom-right ---------- */
+#theme {
+  position: fixed !important;
+  right: 20px;
+  bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+  z-index: 60;
+  align-items: center;
+  gap: 2px;
+  padding: 4px 10px 4px 6px;
+  border-radius: 999px !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
-.bookmark-text { font-size: 0.85rem; }
+#theme:hover { transform: scale(1.06); }
+html.dark #theme {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+}
+html:not(.dark) #theme {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.15);
+}

@@ -108,3 +108,35 @@
         siteMonitor: http://10.0.0.105:8765
         server: local
         container: speedtest-tracker
+
+- Monitoring:
+    - Uptime Kuma:
+        icon: uptime-kuma.png
+        href: http://10.0.0.105:3001
+        siteMonitor: http://10.0.0.105:3001
+        server: local
+        container: uptime-kuma
+    - Scrutiny:
+        icon: scrutiny.png
+        href: http://10.0.0.105:8090
+        siteMonitor: http://10.0.0.105:8090
+        server: local
+        container: scrutiny
+        widget:
+          type: scrutiny
+          url: http://10.0.0.105:8090
+    - Dozzle:
+        icon: dozzle.png
+        href: http://10.0.0.105:8888
+        siteMonitor: http://10.0.0.105:8888
+        server: local
+        container: dozzle
+    - Glances:
+        icon: glances.png
+        href: http://10.0.0.219:61208/api/4/all
+        siteMonitor: http://10.0.0.219:61208/api/4/status
+        widget:
+          type: glances
+          url: http://10.0.0.219:61208
+          version: 4
+          metric: sensor:Package id 0

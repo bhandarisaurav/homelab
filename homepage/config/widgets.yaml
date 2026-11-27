@@ -17,10 +17,14 @@
     units: metric
     cache: 15
 
-- resources:
-    label: docker CT
+- glances:
+    url: http://10.0.0.219:61208
+    version: 4
+    label: Proxmox host
     cpu: true
-    memory: true
+    mem: true
+    cputemp: true
+    uptime: true
     disk: /
     expanded: true
 
