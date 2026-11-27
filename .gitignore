@@ -43,3 +43,6 @@ immichframe/Config/*
 !immichframe/Config/Settings.yml
 !immichframe/Config/api.key.example
 speedtest-tracker/config/
+
+# Arcane global env (local only)
+.env.global
